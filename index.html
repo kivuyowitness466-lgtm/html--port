@@ -13,28 +13,30 @@
             background-color: #F3E9F9;
             font-family: "Quicksand", sans-serif;
             margin: 0;
-            padding: 10px; /* Gives small screen viewports safety padding */
+            padding: 10px; 
         }
 
         section {
             background-color: #D8B4F8;
-            width: 100%;             /* 1. Fluid width */
-            max-width: 800px;        /* 2. Caps desktop view to original size */
-            min-height: 550px;       /* 3. Uses a min-height instead of fixed height */
-            height: auto;            /* Allows card to grow if content stacks vertically */
+            width: 100%;             
+            max-width: 800px;        
+            min-height: 550px;       
+            height: auto;            
             border-radius: 20px;
             margin: 50px auto;
-            padding: 40px 20px;      /* Consistent internal padding */
+            padding: 40px 20px;      
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Keeps components perfectly centered vertically */
+            justify-content: center; 
+            position: relative; /* CRITICAL: Keeps the runaway button trapped inside the card boundary */
+            overflow: hidden;   /* Prevents the button from breaking outside the rounded corners */
         }
 
         img {
-            width: 100%;             /* Fluid scaling */
-            max-width: 300px;        /* Original restriction size */
-            height: auto;            /* Keeps picture proportions perfect */
+            width: 100%;             
+            max-width: 300px;        
+            height: auto;            
             display: block;
             margin: auto;
             border-radius: 20px;
@@ -45,13 +47,14 @@
             text-align: center;
             margin-top: 25px;
             margin-bottom: 30px;
-            font-size: 2rem;        /* Scalable structural font size */
+            font-size: 2rem;        
         }
 
         .buttons {
             display: flex;
             justify-content: center; 
             gap: 20px;              
+            min-height: 50px; /* Reserves layout space for when 'No' leaves the flex flow */
         }
 
         section a {
@@ -59,14 +62,19 @@
             text-align: center;
             display: inline-block; 
             font-weight: bold;
-            min-width: 120px;       /* Gives both buttons uniform initial size */
+            min-width: 120px;       
         }
 
         .yes {
             color: black;
             padding: 12px 24px;
             background-color: palevioletred;
-            border-radius: 12px;    /* Smoother corners to match form styling */
+            border-radius: 12px;    
+            transition: transform 0.2s ease;
+        }
+        
+        .yes:hover {
+            transform: scale(1.1);
         }
 
         .no {
@@ -74,39 +82,42 @@
             padding: 12px 24px;
             background-color: rgb(111, 28, 111);
             border-radius: 12px;
+            /* Smoothly glides across the screen to its new position */
+            transition: all 0.2s ease-out; 
+            z-index: 10;
         }
 
         /* --- 📱 MOBILE BREAKPOINT --- */
         @media (max-width: 480px) {
             section {
-                margin: 20px auto;  /* Snugs closer to viewport borders */
+                margin: 20px auto;  
                 padding: 30px 15px;
             }
 
             img {
-                max-width: 220px;   /* Slightly downsizes graphic to conserve text space */
+                max-width: 220px;   
             }
 
             section h1 {
-                font-size: 1.5rem;  /* Drops font size so typography doesn't wrap awkwardly */
+                font-size: 1.5rem;  
                 margin-bottom: 20px;
             }
 
             .buttons {
-                flex-direction: column; /* Stacks 'Yes' over 'No' if screen is too thin */
+                flex-direction: column; 
                 align-items: center;
                 gap: 15px;
             }
 
             section a {
-                width: 80%;         /* Spreads button surface area for comfortable thumb-tapping */
+                width: 80%;         
             }
         }
     </style>
 </head>
 <body>
 
-<section>
+<section id="card-container">
     <div>
         <img src="images/zoo.jpg" alt="Zoo illustration">
     </div>
@@ -114,10 +125,43 @@
         <h1>🌸will you go on a date with me?🌸</h1> 
         <div class="buttons">
             <a href="yes.html" class="yes">Yes💕</a> 
-            <a href="#" class="no">No😠</a>
+            <a href="#" class="no" id="no-btn">No😠</a>
         </div>
     </div>
 </section>
+
+<script>
+    const noBtn = document.getElementById('no-btn');
+    const container = document.getElementById('card-container');
+
+    function escapeButton() {
+        // Find the boundary limits of your purple section card
+        const containerRect = container.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+
+        // Calculate maximum allowed coordinates so the button stays inside the card padding
+        const maxX = containerRect.width - btnRect.width - 40;
+        const maxY = containerRect.height - btnRect.height - 40;
+
+        // Generate a random spot within those dimensions
+        const randomX = Math.floor(Math.random() * maxX) + 20;
+        const randomY = Math.floor(Math.random() * maxY) + 20;
+
+        // Switch button type to absolute positioning and apply the random target location
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
+    }
+
+    // Triggers when a mouse cursor hovers over it (Desktop)
+    noBtn.addEventListener('mouseover', escapeButton);
+    
+    // Triggers when a finger tries to tap it (Mobile Touch Screens)
+    noBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Prevents the mobile browser from accidentally clicking it anyway
+        escapeButton();
+    });
+</script>
 
 </body>
 </html>
