@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What are we feeling?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F3E9F9;
+            font-family: "Quicksand", sans-serif;
+            margin: 0;
+            padding: 10px; /* Protective mobile viewport padding */
+        }
+
+        section {
+            background-color: #D8B4F8;
+            width: 100%;             /* Fluid horizontal layout base */
+            max-width: 800px;        /* Clamps desktop presentation sizing bounds */
+            min-height: 600px;       /* Substitutes hard heights to give grid space */
+            height: auto;            /* Allows card to expand downward if layout wraps */
+            border-radius: 20px;
+            margin: 50px auto;
+            padding: 40px 20px; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            align-items: center;
+            gap: 20px;
+        }
+
+        section h1 {
+            color: #4A154B;
+            text-align: center;
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        /* --- SMART RESPONSIVE GRID --- */
+        .food-grid {
+            display: grid;
+            /* Automatically drops items to a new row if they fall below 150px wide */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 20px;                             
+            width: 100%;
+            max-width: 650px;
+            margin: auto 0; /* Centers grid vertically in the available section space */
+        }
+
+        .food-option input[type="radio"] {
+            display: none;
+        }
+
+        .food-card {
+            background-color: rgba(255, 255, 255, 0.4); 
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-sizing: border-box;
+        }
+
+        .food-card .emoji {
+            font-size: 2.5rem;
+        }
+
+        .food-card .label {
+            font-weight: bold;
+            color: #4A154B;
+            font-size: 1rem;
+        }
+
+        .food-card:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        /* Highlight the chosen card */
+        .food-option input[type="radio"]:checked + .food-card {
+            background-color: white;
+            border: 2px solid palevioletred;
+            box-shadow: 0 8px 20px rgba(219, 112, 147, 0.2);
+        }
+
+        /* --- REVEAL ANIMATION ADJUSTMENTS --- */
+        .button-container {
+            width: 100%;
+            text-align: center;
+            display: none; 
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .food-grid:has(input[type="radio"]:checked) ~ .button-container {
+            display: block;
+            opacity: 1;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block; 
+            color: black;
+            padding: 14px 60px;
+            width: 50%;
+            box-sizing: border-box;
+            background-color: palevioletred;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        a:hover {
+            transform: scale(1.03);
+        }
+
+        /* --- 📱 MOBILE BREAKPOINT --- */
+        @media (max-width: 480px) {
+            section {
+                margin: 20px auto;
+                padding: 30px 15px;
+            }
+
+            section h1 {
+                font-size: 1.7rem;  /* Keeps title running smoothly on single row */
+            }
+
+            .food-grid {
+                /* Forces a clean 2-column configuration on small screens */
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px;
+            }
+
+            .food-card {
+                padding: 15px 5px;  /* Slightly pads down size to optimize space */
+            }
+
+            .food-card .emoji {
+                font-size: 2rem;    /* Scales emoji sizes subtly down */
+            }
+
+            a {
+                width: 80%;         /* Enhances finger tap area dimensions */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <h1>What are we feeling? 🍜✨</h1> 
+    
+    <div class="food-grid">
+        <label class="food-option">
+            <input type="radio" name="food" value="pizza">
+            <div class="food-card">
+                <span class="emoji">🍕</span>
+                <span class="label">Pizza</span>
+            </div>
+        </label>
+
+        <label class="food-option">
+            <input type="radio" name="food" value="sushi">
+            <div class="food-card">
+                <span class="emoji">🍣</span>
+                <span class="label">Sushi</span>
+            </div>
+        </label>
+
+        <label class="food-option">
+            <input type="radio" name="food" value="burgers">
+            <div class="food-card">
+                <span class="emoji">🍔</span>
+                <span class="label">Burgers</span>
+            </div>
+        </label>
+
+        <label class="food-option">
+            <input type="radio" name="food" value="pasta">
+            <div class="food-card">
+                <span class="emoji">🍝</span>
+                <span class="label">Pasta</span>
+            </div>
+        </label>
+
+        <label class="food-option">
+            <input type="radio" name="food" value="tacos">
+            <div class="food-card">
+                <span class="emoji">🌮</span>
+                <span class="label">Tacos</span>
+            </div>
+        </label>
+
+        <label class="food-option">
+            <input type="radio" name="food" value="ramen">
+            <div class="food-card">
+                <span class="emoji">🍜</span>
+                <span class="label">Ramen</span>
+            </div>
+        </label>
+    </div>
+
+    <div class="button-container">
+        <a href="final.html">this one! ➝</a>
+    </div>
+</section>
+    
+</body>
+</html>

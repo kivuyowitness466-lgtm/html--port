@@ -3,97 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <title>Date</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #F3E9F9;
+            font-family: "Quicksand", sans-serif;
+            margin: 0;
+            padding: 10px; /* Gives small screen viewports safety padding */
+        }
+
+        section {
+            background-color: #D8B4F8;
+            width: 100%;             /* 1. Fluid width */
+            max-width: 800px;        /* 2. Caps desktop view to original size */
+            min-height: 550px;       /* 3. Uses a min-height instead of fixed height */
+            height: auto;            /* Allows card to grow if content stacks vertically */
+            border-radius: 20px;
+            margin: 50px auto;
+            padding: 40px 20px;      /* Consistent internal padding */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Keeps components perfectly centered vertically */
+        }
+
+        img {
+            width: 100%;             /* Fluid scaling */
+            max-width: 300px;        /* Original restriction size */
+            height: auto;            /* Keeps picture proportions perfect */
+            display: block;
+            margin: auto;
+            border-radius: 20px;
+        }
+
+        section h1 {
+            color: #4A154B;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 30px;
+            font-size: 2rem;        /* Scalable structural font size */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center; 
+            gap: 20px;              
+        }
+
+        section a {
+            text-decoration: none;
+            text-align: center;
+            display: inline-block; 
+            font-weight: bold;
+            min-width: 120px;       /* Gives both buttons uniform initial size */
+        }
+
+        .yes {
+            color: black;
+            padding: 12px 24px;
+            background-color: palevioletred;
+            border-radius: 12px;    /* Smoother corners to match form styling */
+        }
+
+        .no {
+            color: white; 
+            padding: 12px 24px;
+            background-color: rgb(111, 28, 111);
+            border-radius: 12px;
+        }
+
+        /* --- 📱 MOBILE BREAKPOINT --- */
+        @media (max-width: 480px) {
+            section {
+                margin: 20px auto;  /* Snugs closer to viewport borders */
+                padding: 30px 15px;
+            }
+
+            img {
+                max-width: 220px;   /* Slightly downsizes graphic to conserve text space */
+            }
+
+            section h1 {
+                font-size: 1.5rem;  /* Drops font size so typography doesn't wrap awkwardly */
+                margin-bottom: 20px;
+            }
+
+            .buttons {
+                flex-direction: column; /* Stacks 'Yes' over 'No' if screen is too thin */
+                align-items: center;
+                gap: 15px;
+            }
+
+            section a {
+                width: 80%;         /* Spreads button surface area for comfortable thumb-tapping */
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Witness Kivuyo</h1>
-        <img src="image/profile.jpg" alt="Profile Photo" width="180" height="200">
-        <p><strong>Objective:</strong> Motivated and hardworking IT student seeking opportunities to apply web development, database management, and problem-solving skills in a professional environment.</p>
-    </header>
-
-    <hr>
-
-    <!-- Navigation -->
-    <nav>
-        <a href="hobbies.html">Hobbies</a> |
-        <a href="contact.html">Contact Me</a>
-    </nav>
-
-    <hr>
-
-    <!-- Education Section -->
-    <section>
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <strong>Bachelor Degree in software engineering</strong><br>
-                UDOM, Tanzania<br>
-                2023 - Present
-            </li>
-            <br>
-            <li>
-                <strong>Advanced Secondary Education</strong><br>
-                CLA<br>
-                2021 - 2023
-            </li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <!-- Work Experience -->
-    <section>
-        <h2>Work Experience</h2>
-        <ul>
-            <li>
-                <strong>Intern - IT Support</strong><br>
-                ABC Company<br>
-                June 2025 - August 2025
-                <ul>
-                    <li>Assisted in computer maintenance and troubleshooting.</li>
-                    <li>Managed office databases and records.</li>
-                    <li>Supported staff with software installation.</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <!-- Skills -->
-    <section>
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML Web Development</li>
-            <li>CSS Basics</li>
-            <li>MySQL Database Management</li>
-            <li>PHP Programming</li>
-            <li>Problem Solving</li>
-            <li>Teamwork & Communication</li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <!-- Awards & Certifications -->
-    <section>
-        <h2>Awards & Certifications</h2>
-        <ul>
-            <li>Web Development Certificate</li>
-            <li>Database Design Project Award</li>
-            <li>Best Student in ICT Department</li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Witness Kivuyo. All Rights Reserved.</p>
-    </footer>
+<section>
+    <div>
+        <img src="images/zoo.jpg" alt="Zoo illustration">
+    </div>
+    <div>
+        <h1>🌸will you go on a date with me?🌸</h1> 
+        <div class="buttons">
+            <a href="yes.html" class="yes">Yes💕</a> 
+            <a href="#" class="no">No😠</a>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>

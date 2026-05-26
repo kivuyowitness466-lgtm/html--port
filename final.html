@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Success!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #F3E9F9;
+            font-family: "Quicksand", sans-serif;
+            margin: 0;
+            padding: 10px; /* Safe padding for tiny viewport mobile edges */
+        }
+
+        section {
+            background-color: #D8B4F8;
+            width: 100%;             /* Fluid horizontal layout base */
+            max-width: 800px;        /* Clamps desktop presentation sizing bounds */
+            min-height: 550px;       /* Substitutes hard heights to give image and text vertical room */
+            height: auto;            /* Allows card to adapt dynamically if layout text wraps */
+            border-radius: 20px;
+            margin: 50px auto;
+            padding: 40px 20px;      /* Consistent protective content spacing padding */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically balances contents in the center of the card */
+        }
+
+        img {
+            width: 100%;             /* Scales fluidly down on small devices */
+            max-width: 300px;        /* Prevents image from stretching too wide on desktop screens */
+            height: auto;            /* Maintains normal aspect ratio proportions */
+            display: block;
+            margin: auto;
+            border-radius: 20px;
+        }
+
+        section h1 {
+            color: #4A154B;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 2rem;        /* Fluid desktop font scaling base */
+            line-height: 1.4;       /* Gives text lines comfortable breathing room */
+        }
+
+        /* --- 📱 MOBILE BREAKPOINT --- */
+        @media (max-width: 480px) {
+            section {
+                margin: 20px auto;  /* Compressed margins on mobile screens */
+                padding: 30px 15px;
+            }
+
+            img {
+                max-width: 220px;   /* Pulls image size down slightly to keep text prominent */
+            }
+
+            section h1 {
+                font-size: 1.5rem;  /* Keeps the massive header text on fewer rows on tiny phone displays */
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <div>
+        <img src="images/zoo.jpg" alt="Zoo illustration">
+    </div>
+    <div>
+        <h1>Glad you didnot say no. Be ready , I'm coming to get youuuu!!!🚗💕</h1> 
+    </div>
+</section>
+
+</body>
+</html>

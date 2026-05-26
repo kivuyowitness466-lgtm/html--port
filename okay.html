@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set the Date</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F3E9F9;
+            font-family: "Quicksand", sans-serif;
+            margin: 0;
+            padding: 10px; /* Protective mobile edge viewport padding */
+        }
+
+        section {
+            background-color: #D8B4F8;
+            width: 100%;             /* Fluid horizontal stretching capability */
+            max-width: 800px;        /* Clamps desktop presentation sizing bounds */
+            min-height: 600px;       /* Substitutes hard heights to give text space */
+            height: auto;            /* Allows the card to stretch naturally if needed */
+            border-radius: 20px;
+            margin: 50px auto;
+            padding: 30px 20px; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically balances contents */
+        }
+
+        img {
+            width: 100%;
+            max-width: 230px;        /* Restricts desktop growth sizes */
+            height: auto;            /* Defends aspect ratios from distorting */
+            display: block;
+            margin: auto;
+            border-radius: 20px;
+        }
+
+        section h1 {
+            color: #4A154B;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        label {
+            color: #4A154B;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: -4px; 
+        }
+
+        input, select {
+            width: 60%; 
+            border: 2px solid transparent;
+            border-radius: 20px;
+            background-color: whitesmoke;
+            padding: 12px 15px;
+            font-family: "Quicksand", sans-serif; 
+            font-size: 0.95rem;
+            color: #4A154B;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border: 2px solid palevioletred;
+            background-color: white;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block; 
+            color: black;
+            padding: 12px 35px; 
+            background-color: palevioletred;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        a:hover {
+            transform: scale(1.05); 
+        }
+
+        /* --- 📱 MOBILE BREAKPOINT --- */
+        @media (max-width: 480px) {
+            section {
+                margin: 20px auto;
+                padding: 30px 15px;
+            }
+
+            img {
+                max-width: 180px;   /* Shrinks the image slightly to maximize space */
+            }
+
+            section h1 {
+                font-size: 1.6rem;  /* Keeps title tidy on small displays */
+            }
+
+            input, select {
+                width: 90%;         /* Expands inputs on mobile for easier thumb taps */
+                font-size: 0.9rem;  /* Minor drop so long text option strings stay legible */
+            }
+
+            a {
+                width: 80%;         /* Gives your action link premium screen presence */
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <div>
+        <img src="images/zoo.jpg" alt="Zoo illustration">
+    </div>
+    <div>
+        <h1>So.. when are you free?😊</h1> 
+        <form action="">
+            <label for="day">Pick a Day</label>
+            <input type="date" id="day" name="date">
+
+            <label for="time">What Time</label>
+            <select name="time" id="time">
+                <option value="" disabled selected>--select time babe--</option>
+                <option value="5pm">5:00pm - we eating with the animals</option>
+                <option value="6pm">6:00pm - this is the right answer btw</option>
+                <option value="7pm">7:00pm - you're making me hungry already</option>
+            </select>
+        </form>
+
+        <div class="button-container">
+            <a href="food.html">Set the date❤️</a>
+        </div>
+    </div>
+</section>
+    
+</body>
+</html>
